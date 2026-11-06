@@ -148,7 +148,7 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
   margin-left: -0.04em;
 }
 .palavra span { display: block; }
-.cardapio-info { margin-top: 28px; max-width: 46ch; }
+.cardapio-info { margin-top: max(32px, 9cqw); max-width: 46ch; }
 .cardapio-info strong { font-weight: 500; }
 .cardapio-pe { margin-top: 40px; max-width: 46ch; }
 .categorias { margin-top: 32px; display: grid; gap: 6px; }
@@ -288,7 +288,6 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 .carta { padding: var(--secao) var(--pad) 0; }
 .carta h2 { font-size: clamp(2rem, 2.8vw, 2.75rem); max-width: 18ch; }
 .carta-papel { margin-top: 40px; max-width: 46ch; display: grid; gap: 1.1em; }
-.carta-papel p:first-child::first-letter { font-family: var(--serif); float: left; font-size: 4.2em; line-height: 0.8; padding: 0.06em 0.1em 0 0; }
 .assinatura { font-family: var(--serif); font-style: italic; font-size: var(--step-lead); margin-top: 0.6em; }
 .assinatura small { display: block; font-family: var(--sans); font-style: normal; font-size: var(--step-small); color: var(--muted); margin-top: 4px; }
 
@@ -298,7 +297,7 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 .fatos { list-style: none; margin: 36px 0 0; padding: 0; display: grid; gap: 14px; max-width: 48ch; }
 .fatos li { display: grid; grid-template-columns: 7.5em 1fr; gap: 12px; }
 .fatos strong { font-weight: 500; }
-.acordeao { margin-top: 56px; display: grid; gap: 6px; max-width: 52ch; }
+.acordeao { margin-top: 56px; display: grid; gap: 6px; }
 .acordeao details { background: var(--surface); }
 .acordeao summary {
   list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
@@ -324,9 +323,14 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 .contato {
   margin: var(--gap) var(--gap) 0;
   background: var(--field); color: var(--field-ink);
-  min-height: 76svh; padding: var(--pad);
-  display: grid; grid-template-rows: auto 1fr auto; gap: 40px;
+  min-height: 62svh; padding: var(--pad);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto 1fr auto; gap: 40px 48px;
 }
+.contato > .contato-grande, .contato > .contato-pe { grid-column: 1 / -1; }
+.contato-horas { margin: 0; display: grid; gap: 10px; font-size: var(--step-body); font-variant-numeric: tabular-nums; min-width: 22em; }
+.contato-horas div { display: grid; grid-template-columns: 7.5em 1fr; gap: 16px; color: var(--field-muted); }
+.contato-horas div.hoje { color: var(--field-ink); font-weight: 500; }
+.contato-horas dd { margin: 0; }
 .contato-frase { font-family: var(--sans); font-weight: 400; letter-spacing: 0; line-height: 1.35; font-size: var(--step-lead); max-width: 26ch; }
 .contato-grande {
   align-self: end;
@@ -408,7 +412,10 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
   .papeleta-total { margin: 14px -20px 0; padding: 12px 20px; }
   .opcoes { grid-template-columns: 1fr; }
   .fatos li { grid-template-columns: 1fr; gap: 0; }
-  .contato { min-height: 0; padding: 32px 20px 28px; gap: 64px; }
+  .contato { min-height: 0; padding: 32px 20px 28px; gap: 40px; grid-template-columns: 1fr; }
+  .contato-horas { min-width: 0; font-size: var(--step-body); order: 2; }
+  .contato-grande { order: 1; }
+  .contato-pe { order: 3; }
   .palco[data-palco="1"] .foto-quadro figcaption { bottom: auto; top: 0; }
   .contato-grande { font-size: 15vw; margin-bottom: 4vh; }
   .contato-pe { flex-direction: column; }

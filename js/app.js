@@ -327,6 +327,19 @@
     $$("[data-endereco]").forEach((el) => (el.textContent = LOJA.endereco));
     $$("[data-cidade]").forEach((el) => (el.textContent = LOJA.cidade));
     $("[data-horarios]").textContent = resumoHorarios();
+    // Semana no contato, com o dia de hoje marcado.
+    const hojeDia = agora().dia;
+    const faixa = (d) => (LOJA.horarios[d] || []).map(([a, f]) => `${horaTexto(a)} às ${horaTexto(f)}`).join(" e ");
+    const grupos = [];
+    [2, 3, 4, 5, 6, 0, 1].forEach((d) => {
+      const g = grupos[grupos.length - 1];
+      if (g && g.k === faixa(d)) g.dias.push(d); else grupos.push({ k: faixa(d), dias: [d] });
+    });
+    $("[data-semana]").innerHTML = grupos.map((g) => {
+      const nome = DIAS_CURTOS[g.dias[0]] + (g.dias.length > 1 ? " a " + DIAS_CURTOS[g.dias[g.dias.length - 1]] : "");
+      const hoje = g.dias.includes(hojeDia);
+      return `<div${hoje ? ' class="hoje"' : ""}><dt>${nome.charAt(0).toUpperCase() + nome.slice(1)}${hoje ? " (hoje)" : ""}</dt><dd>${g.k || "fechado"}</dd></div>`;
+    }).join("");
     $("[data-encomenda]").textContent = `peixe limpo para o almoço, peça até as ${horaTexto(LOJA.encomendaAte)}`;
     $("[data-encomenda-hora]").textContent = horaTexto(LOJA.encomendaAte);
     $$("[data-minimo-texto]").forEach((el) => (el.textContent = brl(LOJA.pedidoMinimoEntrega)));
