@@ -1,0 +1,24 @@
+categoria;item;descricao;preco;unidade;disponivel;observacao
+Peixe fresco;Tainha inteira;Limpa e escamada, do jeito que vai pra brasa.;32,00;kg;sim;Safra de maio a julho. Fora dela, vem congelada.
+Peixe fresco;Filé de pescada;Sem espinha, em bandeja de 1 kg.;54,00;kg;sim;
+Peixe fresco;Corvina em posta;Postas de 2 dedos, boas pra chapa ou ensopado.;38,00;kg;sim;
+Peixe fresco;Camarão-rosa da lagoa;Médio, com casca.;89,00;kg;não;Fora de safra. Volta em fevereiro.
+Peixe fresco;Siri desfiado;Pote de 500 g, pronto pra recheio.;45,00;un;sim;
+Pratos;Tainha recheada na brasa;Recheio de farofa de camarão, arroz e salada. Serve 2.;98,00;un;sim;
+Pratos;Moqueca de peixe;Corvina, pimentões e leite de coco, com pirão e arroz. Serve 2.;112,00;un;sim;
+Pratos;Filé de pescada à milanesa;Com arroz, feijão e salada.;38,00;un;sim;
+Pratos;Corvina na chapa;Com pirão, arroz e batata cozida.;46,00;un;sim;
+Pratos;Risoto de siri;Siri desfiado, tomate e cheiro-verde.;56,00;un;sim;
+Porções;Isca de peixe;500 g de pescada empanada, com molho tártaro.;52,00;un;sim;
+Porções;Lula à dorê;400 g, com limão.;62,00;un;sim;
+Porções;Bolinho de peixe;12 unidades.;34,00;un;sim;
+Pastéis;Pastel de camarão;Massa fina, bem recheado.;14,00;un;sim;
+Pastéis;Pastel de siri;;13,00;un;sim;
+Pastéis;Pastel de peixe;Tainha desfiada com cebola e salsa.;11,00;un;sim;
+Acompanhamentos;Arroz branco;Porção para 2.;10,00;un;sim;
+Acompanhamentos;Pirão;Porção para 2.;12,00;un;sim;
+Acompanhamentos;Salada da casa;Alface, tomate, cebola e pepino.;14,00;un;sim;
+Acompanhamentos;Batata frita;400 g.;22,00;un;sim;
+Bebidas;Refrigerante lata;350 ml.;7,00;un;sim;
+Bebidas;Água mineral;500 ml, com ou sem gás.;4,00;un;sim;
+Bebidas;Suco de laranja;500 ml, espremido na hora.;12,00;un;sim;

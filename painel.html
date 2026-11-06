@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Comandas · Lanço</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#7d0c14">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/painel.css">
+</head>
+<body class="painel">
+  <p class="demo">Demonstração. Numa versão real, este painel tem senha e os pedidos ficam numa planilha. Aqui aparecem os pedidos de exemplo e os que você enviar pelo <a href="index.html#cardapio">cardápio</a>, salvos só neste navegador.</p>
+
+  <header class="topo">
+    <a class="topo-marca" href="index.html" aria-label="Lanço, voltar ao site">
+      <svg viewBox="0 0 236 92" aria-hidden="true"><text x="0" y="70" font-family="Bodoni Moda, serif" font-size="84" font-weight="500" letter-spacing="-2" fill="currentColor">Lanço</text></svg>
+    </a>
+    <div class="topo-titulo">
+      <h1>Comandas de hoje</h1>
+      <p><span data-data></span> · <span class="estado" data-estado></span></p>
+    </div>
+    <div class="topo-acoes">
+      <a class="acao-texto" href="index.html#cardapio">Fazer um pedido de teste</a>
+      <button type="button" class="acao-texto" data-apagar>Apagar meus testes</button>
+    </div>
+  </header>
+
+  <main class="mesa">
+    <section class="numeros" aria-label="Resumo do dia">
+      <div><p>Pedidos hoje</p><strong data-n="hoje">0</strong></div>
+      <div><p>Esperando separar</p><strong data-n="separar">0</strong></div>
+      <div><p>Prontos</p><strong data-n="prontos">0</strong></div>
+      <div><p>Total em pedidos</p><strong data-n="vendido">R$ 0,00</strong></div>
+    </section>
+
+    <div class="mesa-grade">
+      <div class="quadro" aria-label="Comandas por etapa">
+        <section class="raia" data-raia="novo" aria-labelledby="r-novo">
+          <h2 id="r-novo">Novos <span data-qtd></span></h2>
+          <ol class="papeletas" data-lista></ol>
+          <p class="raia-vazia" hidden>Nenhum pedido novo. Quando alguém enviar pelo site, ele aparece aqui.</p>
+        </section>
+        <section class="raia" data-raia="separando" aria-labelledby="r-separando">
+          <h2 id="r-separando">Separando <span data-qtd></span></h2>
+          <ol class="papeletas" data-lista></ol>
+          <p class="raia-vazia" hidden>Nada no balcão agora.</p>
+        </section>
+        <section class="raia" data-raia="pronto" aria-labelledby="r-pronto">
+          <h2 id="r-pronto">Prontos <span data-qtd></span></h2>
+          <ol class="papeletas" data-lista></ol>
+          <p class="raia-vazia" hidden>Nenhum pedido esperando retirada ou entregador.</p>
+        </section>
+      </div>
+
+      <aside class="lado">
+        <section class="balcao" aria-labelledby="t-balcao">
+          <h2 id="t-balcao">Separar no balcão</h2>
+          <p class="lado-sub">Soma dos pedidos novos e em separação.</p>
+          <ul class="balcao-lista" data-balcao></ul>
+        </section>
+
+        <section class="feitos" aria-labelledby="t-feitos">
+          <h2 id="t-feitos">Entregues e retirados</h2>
+          <ul class="feitos-lista" data-feitos></ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <p class="sr-only" aria-live="polite" data-anuncio></p>
+
+  <script src="js/config.js"></script>
+  <script src="js/cardapio-dados.js"></script>
+  <script src="js/pedidos.js"></script>
+  <script src="js/painel.js"></script>
+</body>
+</html>

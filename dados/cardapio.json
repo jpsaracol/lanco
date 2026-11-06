@@ -1,0 +1,248 @@
+{
+  "atualizado_em": "2026-11-06T02:00",
+  "categorias": [
+    {
+      "id": "peixe-fresco",
+      "nome": "Peixe fresco",
+      "itens": [
+        {
+          "id": "tainha-inteira",
+          "nome": "Tainha inteira",
+          "descricao": "Limpa e escamada, do jeito que vai pra brasa.",
+          "preco_centavos": 3200,
+          "unidade": "kg",
+          "disponivel": true,
+          "observacao": "Safra de maio a julho. Fora dela, vem congelada."
+        },
+        {
+          "id": "file-de-pescada",
+          "nome": "Filé de pescada",
+          "descricao": "Sem espinha, em bandeja de 1 kg.",
+          "preco_centavos": 5400,
+          "unidade": "kg",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "corvina-em-posta",
+          "nome": "Corvina em posta",
+          "descricao": "Postas de 2 dedos, boas pra chapa ou ensopado.",
+          "preco_centavos": 3800,
+          "unidade": "kg",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "camarao-rosa-da-lagoa",
+          "nome": "Camarão-rosa da lagoa",
+          "descricao": "Médio, com casca.",
+          "preco_centavos": 8900,
+          "unidade": "kg",
+          "disponivel": false,
+          "observacao": "Fora de safra. Volta em fevereiro."
+        },
+        {
+          "id": "siri-desfiado",
+          "nome": "Siri desfiado",
+          "descricao": "Pote de 500 g, pronto pra recheio.",
+          "preco_centavos": 4500,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        }
+      ]
+    },
+    {
+      "id": "pratos",
+      "nome": "Pratos",
+      "itens": [
+        {
+          "id": "tainha-recheada-na-brasa",
+          "nome": "Tainha recheada na brasa",
+          "descricao": "Recheio de farofa de camarão, arroz e salada. Serve 2.",
+          "preco_centavos": 9800,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "moqueca-de-peixe",
+          "nome": "Moqueca de peixe",
+          "descricao": "Corvina, pimentões e leite de coco, com pirão e arroz. Serve 2.",
+          "preco_centavos": 11200,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "file-de-pescada-a-milanesa",
+          "nome": "Filé de pescada à milanesa",
+          "descricao": "Com arroz, feijão e salada.",
+          "preco_centavos": 3800,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "corvina-na-chapa",
+          "nome": "Corvina na chapa",
+          "descricao": "Com pirão, arroz e batata cozida.",
+          "preco_centavos": 4600,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "risoto-de-siri",
+          "nome": "Risoto de siri",
+          "descricao": "Siri desfiado, tomate e cheiro-verde.",
+          "preco_centavos": 5600,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        }
+      ]
+    },
+    {
+      "id": "porcoes",
+      "nome": "Porções",
+      "itens": [
+        {
+          "id": "isca-de-peixe",
+          "nome": "Isca de peixe",
+          "descricao": "500 g de pescada empanada, com molho tártaro.",
+          "preco_centavos": 5200,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "lula-a-dore",
+          "nome": "Lula à dorê",
+          "descricao": "400 g, com limão.",
+          "preco_centavos": 6200,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "bolinho-de-peixe",
+          "nome": "Bolinho de peixe",
+          "descricao": "12 unidades.",
+          "preco_centavos": 3400,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        }
+      ]
+    },
+    {
+      "id": "pasteis",
+      "nome": "Pastéis",
+      "itens": [
+        {
+          "id": "pastel-de-camarao",
+          "nome": "Pastel de camarão",
+          "descricao": "Massa fina, bem recheado.",
+          "preco_centavos": 1400,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "pastel-de-siri",
+          "nome": "Pastel de siri",
+          "descricao": "",
+          "preco_centavos": 1300,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "pastel-de-peixe",
+          "nome": "Pastel de peixe",
+          "descricao": "Tainha desfiada com cebola e salsa.",
+          "preco_centavos": 1100,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        }
+      ]
+    },
+    {
+      "id": "acompanhamentos",
+      "nome": "Acompanhamentos",
+      "itens": [
+        {
+          "id": "arroz-branco",
+          "nome": "Arroz branco",
+          "descricao": "Porção para 2.",
+          "preco_centavos": 1000,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "pirao",
+          "nome": "Pirão",
+          "descricao": "Porção para 2.",
+          "preco_centavos": 1200,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "salada-da-casa",
+          "nome": "Salada da casa",
+          "descricao": "Alface, tomate, cebola e pepino.",
+          "preco_centavos": 1400,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "batata-frita",
+          "nome": "Batata frita",
+          "descricao": "400 g.",
+          "preco_centavos": 2200,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "nome": "Bebidas",
+      "itens": [
+        {
+          "id": "refrigerante-lata",
+          "nome": "Refrigerante lata",
+          "descricao": "350 ml.",
+          "preco_centavos": 700,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "agua-mineral",
+          "nome": "Água mineral",
+          "descricao": "500 ml, com ou sem gás.",
+          "preco_centavos": 400,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        },
+        {
+          "id": "suco-de-laranja",
+          "nome": "Suco de laranja",
+          "descricao": "500 ml, espremido na hora.",
+          "preco_centavos": 1200,
+          "unidade": "un",
+          "disponivel": true,
+          "observacao": ""
+        }
+      ]
+    }
+  ]
+}

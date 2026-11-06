@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacidade e termos · Lanço</title>
+  <meta name="description" content="Como o site da Lanço trata seus dados, termos de uso, trocas e créditos das imagens. Projeto de demonstração.">
+  <meta name="theme-color" content="#7d0c14">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .doc { max-width: 720px; margin: 0 auto; padding: 72px 24px 120px; }
+    .doc .voltar { display: inline-flex; min-height: 44px; align-items: center; font-size: var(--step-small); }
+    .doc h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-top: 40px; }
+    .doc .resumo { margin-top: 28px; font-size: var(--step-lead); line-height: 1.45; }
+    .doc h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); margin-top: 72px; }
+    .doc p, .doc ul { margin-top: 18px; }
+    .doc ul { padding-left: 1.2em; display: grid; gap: 8px; }
+    .doc .faixa { background: var(--surface); padding: 20px 22px; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <div class="listras" aria-hidden="true"></div>
+  <main class="doc">
+    <a class="voltar" href="index.html">← Voltar ao cardápio</a>
+    <h1>Privacidade e termos</h1>
+    <p class="resumo">O site só monta a mensagem do pedido. Quem envia é você, pelo seu WhatsApp. Nada do que você digita é enviado pelo site para a internet.</p>
+
+    <p class="faixa"><strong>Projeto de demonstração.</strong> A Lanço é uma peixaria fictícia criada para um portfólio. Nomes, endereço, preços e pessoas citadas não existem. Nenhum pedido feito aqui será entregue.</p>
+
+    <h2>Quais dados o site usa</h2>
+    <ul>
+      <li><strong>Nome, endereço, bairro, forma de pagamento e observação.</strong> Servem para escrever a mensagem do pedido e não são enviados para nenhum servidor.</li>
+      <li><strong>Pedido enviado (só nesta demonstração).</strong> Para mostrar o painel do peixeiro, o pedido enviado fica salvo neste navegador, com nome, endereço e itens. Ele não sai do seu aparelho e some com o botão “Apagar meus testes” do painel ou limpando os dados do site. Numa versão real, ele iria para a planilha da peixaria, que só o dono acessa com senha.</li>
+      <li><strong>Itens da comanda.</strong> Ficam guardados no seu navegador (armazenamento local) para você não perder o pedido se recarregar a página. Para apagar, remova os itens ou limpe os dados do site no navegador.</li>
+    </ul>
+    <p>Pedimos só o necessário para entregar: não há cadastro, senha, CPF nem pagamento pelo site (LGPD, art. 6º, princípio da necessidade).</p>
+
+    <h2>Cookies e rastreamento</h2>
+    <p>O site não usa cookies, não tem ferramentas de análise, pixel de anúncio nem rastreadores. As fontes e imagens são servidas do próprio site, sem chamar serviços de terceiros.</p>
+
+    <h2>Quando você envia pelo WhatsApp</h2>
+    <p>Ao tocar em “Enviar pelo WhatsApp”, o aplicativo abre com a mensagem pronta. A partir daí, a conversa segue as regras de privacidade do WhatsApp (Meta). No site real, a peixaria usaria os dados da conversa só para separar, entregar e tirar dúvidas sobre o pedido, e apagaria o histórico quando não fosse mais necessário.</p>
+    <p>Você pode pedir a qualquer momento para ver, corrigir ou apagar seus dados (LGPD, art. 18), pelo próprio WhatsApp da peixaria.</p>
+
+    <h2>Termos do pedido</h2>
+    <ul>
+      <li>O pedido só está confirmado quando a peixaria responde com o horário de entrega ou de retirada.</li>
+      <li>Os preços do cardápio valem no dia. Peixe vendido por quilo pode variar um pouco na balança; a diferença é avisada antes de separar.</li>
+      <li>Item que acabar depois do envio é avisado na resposta, e você escolhe trocar ou retirar do pedido.</li>
+      <li>A entrega atende os bairros listados no cardápio, com a taxa mostrada na comanda. Pedido mínimo para entrega: R$ 40,00.</li>
+      <li>O pagamento é feito na entrega ou na retirada (Pix, cartão ou dinheiro).</li>
+    </ul>
+
+    <h2>Trocas e devolução</h2>
+    <p>Alimento perecível não tem prazo de arrependimento depois de entregue, mas tem garantia de qualidade. Se vier item errado, faltando ou fora do ponto, avise em até 2 horas pelo WhatsApp com uma foto: trocamos o item ou devolvemos o valor dele pelo mesmo meio de pagamento.</p>
+
+    <h2>Acessibilidade</h2>
+    <p>O site funciona com teclado e leitor de tela, respeita o ajuste de “reduzir movimento” do aparelho e mantém contraste alto entre texto e fundo. Se algo não funcionar para você, conte pelo WhatsApp.</p>
+
+    <h2>Quem é responsável</h2>
+    <p>Lanço Peixaria (empresa fictícia). CNPJ, endereço e e-mail de demonstração: um site real mostraria aqui a razão social, o CNPJ, o endereço completo e um contato do responsável pelos dados.</p>
+
+    <h2>Créditos das imagens</h2>
+    <p>Fotos, pintura e vídeo de licença livre, usados como ambiente da cidade e da pesca, não como produtos da peixaria:</p>
+    <ul data-creditos></ul>
+
+    <p style="margin-top:56px"><a class="botao" href="index.html#cardapio">Ver o cardápio</a></p>
+  </main>
+  <script src="js/creditos.js"></script>
+  <script>
+    (function () {
+      var ul = document.querySelector("[data-creditos]");
+      (window.CREDITOS || []).forEach(function (c) {
+        var li = document.createElement("li");
+        li.append("“" + c.titulo + "”, " + c.autor + ", ");
+        var a = document.createElement("a");
+        a.href = c.pagina; a.rel = "noopener"; a.target = "_blank"; a.textContent = c.licenca;
+        li.append(a, ", via Wikimedia Commons");
+        ul.appendChild(li);
+      });
+    })();
+  </script>
+</body>
+</html>

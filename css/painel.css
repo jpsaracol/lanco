@@ -1,0 +1,125 @@
+/* Lanço · painel do peixeiro. Mesma paleta e fontes do site, regras de tela de trabalho:
+   superfícies planas, cor só no que pede ação, números alinhados. */
+
+.painel { background: var(--bg); font-size: 1rem; line-height: 1.5; }
+.painel .estado::before { display: none; }
+.painel .estado { color: var(--muted); }
+.painel .estado.aberto { color: var(--ink); font-weight: 500; }
+
+.demo { background: var(--surface-2); color: var(--ink); font-size: var(--step-small); padding: 10px var(--gap-p, 24px); }
+.demo a { color: var(--ink); }
+
+.topo {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 28px;
+  padding: 20px 24px;
+}
+.topo-marca { color: var(--ink); width: 104px; display: block; }
+.topo-marca svg { width: 100%; height: auto; display: block; }
+.topo-titulo h1 { font-family: var(--sans); font-weight: 500; letter-spacing: 0; font-size: 1.375rem; line-height: 1.2; }
+.topo-titulo p { color: var(--muted); font-size: var(--step-small); margin-top: 2px; }
+.topo-acoes { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
+
+.acao-texto {
+  background: none; border: 0; padding: 0; min-height: 44px; display: inline-flex; align-items: center;
+  font: 500 var(--step-small)/1.2 var(--sans); color: var(--ink); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 1px;
+}
+@media (hover: hover) { .acao-texto:hover { text-decoration-thickness: 2px; } }
+
+.mesa { padding: 0 24px 64px; }
+
+/* Resumo: números como tipo, sem cartões */
+.numeros { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; background: var(--surface); }
+.numeros > div { padding: 18px 20px 20px; }
+.numeros > div + div { border-left: 1px solid var(--bg); } /* taste-skill-ignore: linha de 1px é a divisão normal numa tela de trabalho */
+.numeros p { font-size: var(--step-small); color: var(--muted); }
+.numeros strong {
+  display: block; margin-top: 4px;
+  font-family: var(--sans); font-weight: 500; letter-spacing: -0.01em; line-height: 1.05;
+  font-size: clamp(1.75rem, 2.2vw, 2.375rem); font-variant-numeric: tabular-nums;
+}
+
+.mesa-grade { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; margin-top: 24px; align-items: start; }
+
+/* Quadro com três raias */
+.quadro { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.raia h2 {
+  font-family: var(--sans); font-weight: 500; letter-spacing: 0; line-height: 1.2; font-size: 1.0625rem;
+  display: flex; align-items: baseline; gap: 8px; padding: 4px 2px 12px;
+}
+.raia h2 span { color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; }
+.raia[data-raia="novo"] h2 span { color: var(--ink); font-weight: 500; }
+.papeletas { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.raia-vazia { background: var(--surface); color: var(--muted); font-size: var(--step-small); padding: 20px; }
+
+.papeleta-p article { background: #efefee; padding: 16px 18px 18px; position: relative; }
+.raia[data-raia="novo"] .papeleta-p article { border-left: 4px solid var(--ink); }
+.papeleta-p.chegou article { animation: chegou 1.6s var(--ease-out) both; }
+@keyframes chegou { 0% { background: var(--ink); color: var(--bg); } 100% { background: #efefee; color: var(--ink); } }
+
+.pp-cabeca { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.pp-cabeca h3 { font-family: var(--sans); font-weight: 500; font-size: 1rem; letter-spacing: 0; line-height: 1.3; }
+.pp-cabeca time { font-size: var(--step-small); color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pp-modo { margin-top: 6px; font-size: var(--step-small); color: var(--muted); line-height: 1.45; }
+.pp-modo strong { color: var(--ink); font-weight: 500; }
+.pp-itens { list-style: none; margin: 12px 0 0; padding: 10px 0 0; display: grid; gap: 6px; border-top: 1px solid var(--surface-2); font-variant-numeric: tabular-nums; } /* taste-skill-ignore: linha de 1px é a divisão normal numa tela de trabalho */
+.pp-itens li { display: grid; grid-template-columns: 4.2em 1fr auto; gap: 8px; align-items: baseline; }
+.pp-q { font-weight: 500; }
+.pp-v { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pp-obs { margin-top: 10px; background: var(--surface); padding: 8px 10px; font-size: var(--step-small); }
+.pp-obs::before { content: "Obs.: "; font-weight: 500; }
+.pp-conta { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--surface-2); display: grid; gap: 4px; font-size: var(--step-small); } /* taste-skill-ignore: linha de 1px é a divisão normal numa tela de trabalho */
+.pp-conta div { display: flex; justify-content: space-between; gap: 12px; }
+.pp-conta dt { color: var(--muted); }
+.pp-conta dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.pp-conta .pp-total { font-size: 1rem; }
+.pp-conta .pp-total dt { color: var(--ink); }
+.pp-conta .pp-total dd { font-weight: 500; }
+.pp-acoes { margin-top: 14px; display: grid; gap: 4px; }
+.pp-avancar { width: 100%; min-height: 46px; font-size: var(--step-small); }
+.raia:not([data-raia="novo"]) .pp-avancar { background: var(--surface-2); color: var(--ink); }
+.pp-menores { display: flex; gap: 18px; }
+.pp-exemplo { position: absolute; right: 18px; bottom: 14px; font-size: 0.8125rem; color: var(--muted); }
+
+/* Lado */
+.lado { display: grid; gap: 16px; }
+.balcao, .feitos { background: var(--surface); padding: 18px 20px 20px; }
+.lado h2 { font-family: var(--sans); font-weight: 500; letter-spacing: 0; line-height: 1.2; font-size: 1.0625rem; }
+.lado-sub { font-size: var(--step-small); color: var(--muted); margin-top: 2px; }
+.balcao-lista { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+.balcao-lista li { display: grid; grid-template-columns: 4.6em 1fr; column-gap: 12px; align-items: baseline; }
+.balcao-lista strong { font-weight: 500; font-size: 1.25rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.balcao-lista small { grid-column: 2; font-size: 0.8125rem; color: var(--muted); }
+.feitos-lista { list-style: none; margin: 10px 0 0; padding: 0; display: grid; font-size: var(--step-small); }
+.feitos-lista li { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; }
+.feitos-lista .acao-texto { min-height: 40px; }
+.vazio { color: var(--muted); font-size: var(--step-small); display: block !important; }
+
+/* Tablet e celular */
+@media (max-width: 1180px) {
+  .mesa-grade { grid-template-columns: 1fr; }
+  .lado { grid-template-columns: 1fr 1fr; order: -1; }
+}
+@media (max-width: 760px) {
+  .topo { grid-template-columns: auto 1fr; padding: 16px; gap: 8px 16px; }
+  .topo-acoes { grid-column: 1 / -1; justify-content: flex-start; }
+  .mesa { padding: 0 16px 48px; }
+  .numeros { grid-template-columns: 1fr 1fr; }
+  .numeros > div:nth-child(3) { border-top: 1px solid var(--bg); } /* taste-skill-ignore: linha de 1px é a divisão normal numa tela de trabalho */
+  .numeros > div:nth-child(4) { border-left: 1px solid var(--bg); border-top: 1px solid var(--bg); } /* taste-skill-ignore: linha de 1px é a divisão normal numa tela de trabalho */
+  .quadro { grid-template-columns: 1fr; gap: 28px; }
+  .lado { grid-template-columns: 1fr; order: 0; }
+  .demo { padding: 10px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .papeleta-p.chegou article { animation: none; } }
+
+/* Imprimir uma comanda só */
+@media print {
+  .imprimindo .demo, .imprimindo .topo, .imprimindo .numeros, .imprimindo .lado,
+  .imprimindo .raia h2, .imprimindo .raia-vazia, .imprimindo .papeleta-p:not(.imprimir),
+  .imprimindo .pp-acoes, .imprimindo .pp-exemplo { display: none !important; }
+  .imprimindo, .imprimindo .papeleta-p article { background: #fff; color: #000; border: 0 !important; }
+  .imprimindo .quadro, .imprimindo .mesa-grade { display: block; }
+  .imprimindo .papeleta-p article { max-width: 80mm; padding: 0; }
+}

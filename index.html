@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lanço · Peixaria em Rio Grande</title>
+  <meta name="description" content="Cardápio do dia de uma peixaria de bairro em Rio Grande/RS. Monte o pedido, confira a comanda e envie pronto pelo WhatsApp. Projeto de demonstração.">
+  <meta name="theme-color" content="#7d0c14">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="pular" href="#cardapio">Pular para o cardápio</a>
+
+  <!-- 1. Palco: cartão + cardápio, com a foto parada à direita -->
+  <div class="palco" data-palco="1">
+    <div class="coluna">
+      <header class="cartao" id="inicio" data-foto="0">
+        <div class="listras" aria-hidden="true"></div>
+        <div class="cartao-corpo">
+          <p class="marca"><svg class="marca-svg" viewBox="0 0 236 92" role="img" aria-label="Lanço"><use href="#logo"/></svg></p>
+          <h1>Peixe do dia, pelo WhatsApp</h1>
+          <p class="apoio">Peixaria de bairro em Rio Grande. O cardápio muda com a pesca: escolha, confira a comanda e mande o pedido pronto.</p>
+          <a class="botao" href="#cardapio">Ver o cardápio</a>
+          <p class="estado" data-estado>Horários abaixo</p>
+          <nav class="cartao-links" aria-label="Seções">
+            <a href="#comanda">Comanda</a>
+            <a href="#casa">A casa</a>
+            <a href="#perguntas">Entrega e horários</a>
+          </nav>
+        </div>
+      </header>
+
+      <section class="cardapio" id="cardapio" aria-labelledby="t-cardapio" data-foto="1">
+        <h2 class="palavra" id="t-cardapio"><span>Hoje</span></h2>
+        <p class="cardapio-info" data-atualizado>O que a rede trouxe esta semana, com preço por quilo ou por unidade.</p>
+        <div class="categorias" data-categorias>
+          <noscript><p>Para montar o pedido, ative o JavaScript. O cardápio completo também está em <a href="dados/cardapio.json">dados/cardapio.json</a>.</p></noscript>
+        </div>
+        <p class="cardapio-pe">Peixe vendido por quilo sai em múltiplos de meio quilo; a balança acerta a diferença na hora, e a peixaria avisa antes se der mais. Item esgotado volta quando a pesca deixa.</p>
+      </section>
+    </div>
+
+    <div class="foto">
+      <figure class="foto-quadro" data-fotos>
+        <img class="ativa" src="assets/detalhe-de-barco-de-pesca.jpg" width="1600" height="1298" alt="Proa de um barco de pesca branco e vermelho atracado no cais de Rio Grande" fetchpriority="high">
+        <img src="assets/fisher-with-his-net.jpg" width="1066" height="1600" alt="Pescador com botas e avental puxando a rede na beira da praia" loading="lazy">
+        <figcaption data-legenda>Barco de pesca no cais de Rio Grande</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- 2. Comanda: quebra o palco, campo vermelho de ponta a ponta -->
+  <section class="comanda" id="comanda" aria-labelledby="t-comanda">
+    <div class="comanda-texto">
+      <h2 id="t-comanda">Sua comanda</h2>
+      <p>Tudo o que você escolheu aparece aqui, com a conta feita. Confira, diga se é retirada ou entrega e mande pelo WhatsApp. A mensagem já vai escrita.</p>
+      <dl class="comanda-regras">
+        <div><dt>Retirada</dt><dd>sem pedido mínimo</dd></div>
+        <div><dt>Entrega</dt><dd data-minimo>pedido mínimo de R$ 40,00</dd></div>
+        <div><dt>Pagamento</dt><dd>na entrega ou na retirada</dd></div>
+      </dl>
+    </div>
+
+    <form class="papeleta" data-form novalidate>
+      <div class="papeleta-itens" data-itens aria-live="polite">
+        <p class="vazia">A comanda está vazia. <a href="#cardapio">Escolha no cardápio</a> e os itens aparecem aqui.</p>
+      </div>
+
+      <fieldset class="grupo">
+        <legend>Como você quer receber?</legend>
+        <div class="opcoes">
+          <label class="opcao"><input type="radio" name="modo" value="retirada" checked> <span>Retirar na peixaria</span></label>
+          <label class="opcao"><input type="radio" name="modo" value="entrega"> <span>Receber em casa</span></label>
+        </div>
+      </fieldset>
+
+      <div class="campos">
+        <label class="campo">
+          <span>Seu nome</span>
+          <input name="nome" autocomplete="given-name" required aria-describedby="erro-nome">
+          <small class="erro" id="erro-nome" data-erro="nome"></small>
+        </label>
+
+        <div class="so-entrega" data-entrega hidden>
+          <label class="campo">
+            <span>Bairro</span>
+            <select name="bairro" aria-describedby="erro-bairro" data-bairros>
+              <option value="">Escolha o bairro</option>
+            </select>
+            <small class="erro" id="erro-bairro" data-erro="bairro"></small>
+          </label>
+          <label class="campo">
+            <span>Rua, número e complemento</span>
+            <input name="endereco" autocomplete="street-address" aria-describedby="erro-endereco">
+            <small class="erro" id="erro-endereco" data-erro="endereco"></small>
+          </label>
+        </div>
+
+        <label class="campo">
+          <span>Pagamento</span>
+          <select name="pagamento" data-pagamentos></select>
+        </label>
+        <label class="campo" data-troco hidden>
+          <span>Troco para quanto?</span>
+          <input name="troco" inputmode="decimal" placeholder="Ex.: 100" aria-describedby="erro-troco">
+          <small class="erro" id="erro-troco" data-erro="troco"></small>
+        </label>
+        <label class="campo">
+          <span>Observação <em>(opcional)</em></span>
+          <input name="obs" maxlength="140" placeholder="Ex.: tainha em filé, sem cebola no pastel">
+        </label>
+      </div>
+
+      <div class="conta" data-conta></div>
+
+      <div class="papeleta-total">
+        <span>Total</span>
+        <strong data-total>R$ 0,00</strong>
+      </div>
+
+      <div class="papeleta-pe">
+        <button class="botao botao-cheio" type="submit" data-enviar>Enviar pelo WhatsApp</button>
+        <p class="enviado" data-enviado tabindex="-1" role="status" hidden></p>
+        <p class="aviso-fechado" data-fechado hidden></p>
+        <details class="previa">
+          <summary>Ver a mensagem que vai ser enviada</summary>
+          <p class="previa-texto" data-previa></p>
+        </details>
+        <p class="nota">Seu nome e endereço vão dentro da mensagem do WhatsApp. Nesta demonstração, o pedido também fica salvo só neste navegador, para aparecer no painel. <a href="privacidade.html">Privacidade e termos</a>.</p>
+      </div>
+    </form>
+  </section>
+
+  <!-- 3. Segundo palco: a carta e as perguntas, foto parada à esquerda -->
+  <div class="palco palco-inverso" data-palco="2">
+    <div class="foto">
+      <figure class="foto-quadro" data-fotos>
+        <video class="ativa" src="assets/cast-fish-net-slow-motion-kanagawa-japan.webm" poster="assets/cast-fish-net-slow-motion-kanagawa-japan-poster.jpg" width="854" height="480" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+        <img src="assets/molhes-da-barra-rio-grande-rs.jpg" width="1600" height="1200" alt="Vista aérea dos Molhes da Barra entrando no mar, em Rio Grande" loading="lazy">
+        <figcaption data-legenda>Uma tarrafa aberta no ar: isso é um lanço</figcaption>
+      </figure>
+    </div>
+
+    <div class="coluna">
+      <section class="carta" id="casa" aria-labelledby="t-casa" data-foto="0">
+        <h2 id="t-casa">Quem puxa a rede</h2>
+        <div class="carta-papel">
+          <p>Lanço é o nome de cada vez que a rede vai à água e volta. Tem lanço cheio e tem lanço fraco. Por isso o nosso cardápio muda: o que está nele hoje é o que a lagoa e o mar deram nesta semana.</p>
+          <p>A gente compra dos barcos que descarregam no cais, limpa aqui mesmo e vende no mesmo dia. Você escolhe se quer inteiro, em posta ou em filé, e não paga a mais por isso.</p>
+          <p>Quando o camarão da lagoa sai de safra, ele sai do cardápio também. A gente prefere avisar que acabou a vender outro no lugar sem dizer.</p>
+          <p>Faz o pedido pelo WhatsApp que a gente separa, limpa e avisa quando está pronto.</p>
+          <p class="assinatura">Nilo e Cida<small>personagens do projeto de demonstração</small></p>
+        </div>
+      </section>
+
+      <section class="perguntas" id="perguntas" aria-labelledby="t-perguntas" data-foto="1">
+        <h2 id="t-perguntas">Antes de pedir</h2>
+        <ul class="fatos">
+          <li><strong>Onde</strong> <span data-endereco></span></li>
+          <li><strong>Quando</strong> <span data-horarios></span></li>
+          <li><strong>Encomenda</strong> <span data-encomenda></span></li>
+        </ul>
+
+        <div class="acordeao">
+          <details>
+            <summary>Quanto custa a entrega?</summary>
+            <div class="resposta"><p>Depende do bairro. O pedido mínimo para entrega é <span data-minimo-texto>R$ 40,00</span>; na retirada não tem mínimo.</p><ul class="taxas" data-taxas></ul></div>
+          </details>
+          <details>
+            <summary>Vocês limpam o peixe?</summary>
+            <div class="resposta"><p>Sim, sem custo. Escreva na observação da comanda se quer inteiro escamado, em posta ou em filé.</p></div>
+          </details>
+          <details>
+            <summary>O pagamento é feito pelo site?</summary>
+            <div class="resposta"><p>Não. O site só monta o pedido. Você paga na entrega ou na retirada, com Pix, cartão ou dinheiro. Se escolher Pix, a chave vem na resposta do WhatsApp.</p></div>
+          </details>
+          <details>
+            <summary>Meu pedido já está confirmado quando eu envio?</summary>
+            <div class="resposta"><p>Ainda não. Ele é confirmado quando a peixaria responde no WhatsApp com o horário de entrega ou de retirada. Se algum item tiver acabado, avisamos antes de separar.</p></div>
+          </details>
+          <details>
+            <summary>E se vier algo errado?</summary>
+            <div class="resposta"><p>Fale com a gente no WhatsApp em até 2 horas depois de receber. Item errado, faltando ou fora do ponto: trocamos ou devolvemos o valor daquele item.</p></div>
+          </details>
+          <details>
+            <summary>Por que o camarão aparece como esgotado?</summary>
+            <div class="resposta"><p>O camarão-rosa da Lagoa dos Patos tem época de pesca no começo do ano. Fora dela, ele fica no cardápio marcado como esgotado, para você saber quando volta.</p></div>
+          </details>
+        </div>
+        <a class="botao" href="#comanda">Revisar a comanda</a>
+      </section>
+    </div>
+  </div>
+
+  <!-- 4. Contato: o estado da casa em letra grande -->
+  <section class="contato" aria-labelledby="t-contato">
+    <h2 class="contato-frase" id="t-contato">Peixe limpo para o almoço? Peça até as <span data-encomenda-hora>11h</span>.</h2>
+    <a class="contato-grande" href="#comanda" data-estado-grande>Peça pelo WhatsApp</a>
+    <div class="contato-pe">
+      <p><span data-endereco></span><br><span data-cidade>Rio Grande/RS</span></p>
+      <p><a href="#cardapio">Cardápio</a><br><a href="privacidade.html">Privacidade e termos</a></p>
+    </div>
+  </section>
+
+  <div class="listras listras-fina" aria-hidden="true"></div>
+
+  <footer class="rodape">
+    <div class="rodape-foto">
+      <img src="assets/manoel-costa-1982-pesca-de-tarrafa-oleo.jpg" width="1600" height="1185" alt="Detalhe de pintura a óleo: pescadores jogando tarrafa na beira d'água, com peixes azuis na areia" loading="lazy">
+    </div>
+    <div class="rodape-menu">
+      <p class="rodape-marca"><svg viewBox="0 0 236 92" role="img" aria-label="Lanço"><use href="#logo"/></svg></p>
+      <nav aria-label="Rodapé">
+        <ul class="rodape-links">
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#comanda">Comanda</a></li>
+          <li><a href="#casa">A casa</a></li>
+          <li><a href="#perguntas">Entrega e horários</a></li>
+          <li><a href="privacidade.html">Privacidade e termos</a></li>
+        </ul>
+      </nav>
+      <div class="rodape-blocos">
+        <p><strong>Lanço Peixaria</strong><br><span data-endereco></span><br><span data-cidade></span></p>
+        <p><strong>Projeto de demonstração</strong><br>Peixaria, pessoas e preços fictícios, feitos para um portfólio.</p>
+      </div>
+      <p class="rodape-painel"><a href="painel.html">Painel do peixeiro</a> (demonstração)</p>
+      <details class="creditos">
+        <summary>Créditos das imagens</summary>
+        <ul data-creditos></ul>
+      </details>
+      <p class="legal" data-legal></p>
+    </div>
+  </footer>
+
+  <!-- Barra da comanda: aparece quando há itens e a comanda não está na tela -->
+  <a class="barra-comanda" href="#comanda" data-barra hidden>
+    <span data-barra-qtd>0 itens</span>
+    <strong data-barra-total>R$ 0,00</strong>
+    <span class="barra-acao">Revisar comanda</span>
+  </a>
+  <p class="sr-only" aria-live="polite" data-anuncio></p>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo" viewBox="0 0 236 92">
+      <text x="0" y="70" font-family="Bodoni Moda, serif" font-size="84" font-weight="500" letter-spacing="-2" fill="currentColor">Lanço</text>
+    </symbol>
+  </svg>
+
+  <script src="js/config.js"></script>
+  <script src="js/cardapio-dados.js"></script>
+  <script src="js/creditos.js"></script>
+  <script src="js/pedidos.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

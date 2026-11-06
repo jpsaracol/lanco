@@ -1,0 +1,35 @@
+name: Cardápio
+
+# Quando o dono sobe uma planilha nova, os testes rodam e o cardápio do site é regerado.
+on:
+  push:
+    paths:
+      - "dados/cardapio.csv"
+      - "dados/cardapio.xlsx"
+      - "ferramentas/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install openpyxl
+      - name: Testes
+        run: python -m unittest discover ferramentas
+      - name: Gerar cardápio
+        # A planilha oficial é o CSV; para usar o Excel, troque por dados/cardapio.xlsx
+        run: python ferramentas/gerar_cardapio.py dados/cardapio.csv
+      - name: Salvar
+        run: |
+          git config user.name "cardapio-bot"
+          git config user.email "cardapio-bot@users.noreply.github.com"
+          git add js/cardapio-dados.js dados/cardapio.json
+          git diff --cached --quiet || git commit -m "Atualiza cardápio a partir da planilha"
+          git push
