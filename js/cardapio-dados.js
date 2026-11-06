@@ -1,6 +1,6 @@
 // Gerado por ferramentas/gerar_cardapio.py. Não edite à mão: edite a planilha.
 window.CARDAPIO = {
-  "atualizado_em": "2026-11-06T02:00",
+  "atualizado_em": "2026-11-06T06:28",
   "categorias": [
     {
       "id": "peixe-fresco",
